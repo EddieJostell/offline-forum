@@ -17,6 +17,7 @@ const AvatarSelector = ({ currentPersona }) => {
   }
   return (
     <img
+      data-avatarimg="avatarImg"
       src={img}
       className="w-12 rounded-full"
       alt="Avatar"
