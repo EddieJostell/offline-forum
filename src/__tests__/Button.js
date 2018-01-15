@@ -6,7 +6,7 @@ describe('<Button />', () => {
     it.skip('render the Button', () => {
         render(<Button />);
     });
-} )
+});
 
 it.skip('check if HOC Button exists', () => {
     const btn = shallow(<Button />);
