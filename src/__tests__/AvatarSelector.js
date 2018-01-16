@@ -15,6 +15,8 @@ describe("<AvatarSelector />", () => {
     const logo = shallow(<AvatarSelector currentPersona="Zac" />);
 
     expect(logo.find("img").prop("src")).toContain("zac.png");
+
+    
   });
 });
 
