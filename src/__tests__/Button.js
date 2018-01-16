@@ -11,6 +11,11 @@ describe('<Button />', () => {
 it.skip('check if HOC Button exists', () => {
     const btn = shallow(<Button />);
     expect(btn.find('[data-test="button"]').exists());
+    /*
+expect(wrapper.find('[data-test="button"]')
+    .hasClass('cursor-not-allowed'))
+    .toEqual(false);
+    */
 })
 
 it.skip('Snapshot of component', () => {
