@@ -6,16 +6,22 @@ describe('<Button />', () => {
     it.skip('render the Button', () => {
         render(<Button />);
     });
-} )
+});
 
 it.skip('check if HOC Button exists', () => {
     const btn = shallow(<Button />);
     expect(btn.find('[data-test="button"]').exists());
 })
 
-it.skip('Has props shown in Snapshot', () => {
+it.skip('Snapshot of component', () => {
     const btn = shallow(<Button onClick="onClick" />);
     expect(btn).toMatchSnapshot();
 });
+
+it('Button has props', () => {
+    const btn = shallow(<Button />);
+    console.log(btn.props());
+    expect(btn.props()).toBeTruthy();
+})
 
 
