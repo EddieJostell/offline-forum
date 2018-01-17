@@ -1,25 +1,23 @@
 import React from 'react';
-import { render, mount } from 'enzyme';
+import { render, shallow } from 'enzyme';
 import App from '../components/App';
-import PersonaSwitcher from '../components/PersonaSwitcher';
 
 test('renders the app', () => {
   render(<App />);
 });
 
+describe("What page am I on?", () => {
+  it('Expect page "home"', () => {
+    const wrapper = shallow(<App />);
+    wrapper.setState({ currentPage : "home" })
+    wrapper.instance().changePage();
+    expect(wrapper.state().currentPage).toBe("bot"); 
+  });
 
-describe("<PersonaSwitcher />", () => {
-  it("Switching persona", () => {
-    const wrapper = mount(<App />);
-    wrapper.setState({ currentPersona : "Zac" })
-    const personaState = wrapper.state().currentPersona;
-    const wrapperPersona = render(<PersonaSwitcher currentPersona={personaState} changePersona={() => {}} />)
-    const selectWrapper = wrapper.find('select');
-    expect(wrapperPersona.find('select [selected]').val()).toEqual('Zac');
-    selectWrapper.simulate('change', {target : { value : "Morgana" }});
-    const personaState2 = wrapper.state().currentPersona;
-    const wrapperPersona2 = render(<PersonaSwitcher currentPersona={personaState2} changePersona={() => {}} />)
-    expect(wrapperPersona2.find('select [selected]').val()).toEqual('Morgana');
-  }); 
+  it('Expect page "bot"', () => {
+    const wrapper = shallow(<App />);
+    wrapper.setState({ currentPage : "bot" })
+    wrapper.instance().changePage();
+    expect(wrapper.state().currentPage).toBe("home"); 
+  });
 });
-/* wrapperPersona.setProps({ currentPersona: 'Morgana' }); */
