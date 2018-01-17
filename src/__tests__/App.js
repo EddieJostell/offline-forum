@@ -11,17 +11,15 @@ test('renders the app', () => {
 describe("<PersonaSwitcher />", () => {
   it("Switching persona", () => {
     const wrapper = mount(<App />);
-    wrapper.setState({ currentPersona: "Morgana" });
+    wrapper.setState({ currentPersona : "Zac" })
     const personaState = wrapper.state().currentPersona;
-    console.log(personaState);
-    expect(personaState).toBe("Morgana")
-    const wrapperPersona = mount(<PersonaSwitcher currentPersona={personaState} changePersona={() => {}} />)
-    console.log(wrapperPersona.props().currentPersona);
-    const selectWrapper = wrapperPersona.find('[data-selectnpc="select"]');
-    selectWrapper.simulate('change', {target : { value : "Morgana"}});
-    const newState = wrapper.state().currentPersona;
-    console.log(newState);
-    expect(wrapperPersona.props().currentPersona).toBe("Morgana");
+    const wrapperPersona = render(<PersonaSwitcher currentPersona={personaState} changePersona={() => {}} />)
+    const selectWrapper = wrapper.find('select');
+    expect(wrapperPersona.find('select [selected]').val()).toEqual('Zac');
+    selectWrapper.simulate('change', {target : { value : "Morgana" }});
+    const personaState2 = wrapper.state().currentPersona;
+    const wrapperPersona2 = render(<PersonaSwitcher currentPersona={personaState2} changePersona={() => {}} />)
+    expect(wrapperPersona2.find('select [selected]').val()).toEqual('Morgana');
   }); 
 });
 /* wrapperPersona.setProps({ currentPersona: 'Morgana' }); */
