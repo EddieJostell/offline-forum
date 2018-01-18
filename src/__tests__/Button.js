@@ -26,7 +26,9 @@ it("Button has props", () => {
 
 it("Button has CSS", () => {
   const btn = shallow(<Button />);
+  console.log(btn.instance().);
   expect(btn.props().className).toEqual(
     "bg-indigo-dark hover:bg-indigo-darker text-white font-bold py-2 px-4 rounded-full "
   );
+ 
 });
