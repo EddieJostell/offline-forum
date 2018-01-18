@@ -8,7 +8,7 @@ describe("<Button />", () => {
   });
 });
 
-it.skip("check if HOC Button exists", () => {
+it.skip("check if component exists", () => {
   const btn = shallow(<Button />);
   expect(btn.find('[data-test="button"]').exists());
 });
@@ -18,15 +18,16 @@ it.skip("Snapshot of component", () => {
   expect(btn).toMatchSnapshot();
 });
 
-it("Button has props", () => {
-  const btn = shallow(<Button />);
+it.skip("Button has props", () => {
+  const btn = shallow(<Button  onClick={() => {}} />);
   //  console.log(btn.props());
   expect(btn.props()).toBeTruthy();
 });
 
 it("Button has CSS", () => {
-  const btn = shallow(<Button />);
-  expect(btn.props().className).toEqual(
-    "bg-indigo-dark hover:bg-indigo-darker text-white font-bold py-2 px-4 rounded-full "
-  );
-});
+  const btn = shallow(<Button danger={true} />);
+  console.log(btn.html());
+  expect(btn.find('[data-test="button"]').hasClass("bg-red-dark")).toBe(true);
+  btn.setProps({ danger : false });
+  expect(btn.find('[data-test="button"]').hasClass("bg-red-dark")).toBe(false);
+  });

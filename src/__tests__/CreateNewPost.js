@@ -26,7 +26,7 @@ describe("<CreateNewPost", () => {
     wrapper.find("form").simulate("submit");
     /* console.log(titleEvent.target.value);
     console.log(contentEvent.target.value); */
-    console.log(wrapper.props());
+   // console.log(wrapper.props());
     expect(titleEvent.target.value).toBeDefined();
     expect(contentEvent.target.value).toBeDefined();
   });
