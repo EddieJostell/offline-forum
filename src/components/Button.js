@@ -10,6 +10,7 @@ const Button = ({ onClick, children, className, danger }) => (
     className={`${danger ? dangerStyle : defaultStyle} ${className}`}
     onClick={onClick}
     data-test='button'
+    
   >
     { children }
   </button>
