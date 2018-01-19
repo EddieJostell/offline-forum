@@ -5,7 +5,7 @@ import Button from './Button';
 import Comments from './Comments';
 
 const SinglePost = ({ title, content, author, id, date, currentPersona, onClick }) => (
-  <div className="w-full shadow p-6 m-6 border rounded relative">
+  <div data-type="post" className="w-full shadow p-6 m-6 border rounded relative">
     <article className="mb-2">
       { currentPersona === author && 
         <Button 
