@@ -32,6 +32,34 @@ describe("<CreateNewPost", () => {
     expect(wrapper.exists()).toBe(true);
   });
 
+   it("Can Create a Post with only a title", () => {
+     const currentPersona = "Zac";
+     const newMockPost = jest.fn();
+     const wrapper = mount(<Posts CreateNewPost={newMockPost} currentPersona={currentPersona} />);
+     const titleEvent = { target: { name: "title", value: "My Awesome Post" } };
+     const contentEvent = { target: { name: "content", value: null } };
+     wrapper.find('input[name="title"]').simulate("change", titleEvent);
+     // wrapper.find('textarea[name="content"]').simulate('change', contentEvent);
+     wrapper.find("form").simulate("submit");
+     expect(titleEvent.target.value).toBeDefined();
+     expect(contentEvent.target.value).toBe(null);
+     expect(wrapper.exists()).toBeTruthy();
+   });
+
+   it('Can Create a Post with only content', () => {
+      const currentPersona = "Zac";
+      const newMockPost = jest.fn();
+      const wrapper = mount(<Posts CreateNewPost={newMockPost} currentPersona={currentPersona} />);
+      const titleEvent = { target: { name: "title", value: "My Awesome Post" } };
+      const contentEvent = { target: { name: "content", value: null } };
+      wrapper.find('input[name="title"]').simulate("change", titleEvent);
+      // wrapper.find('textarea[name="content"]').simulate('change', contentEvent);
+      wrapper.find("form").simulate("submit");
+      expect(titleEvent.target.value).toBeDefined();
+      expect(contentEvent.target.value).toBe(null);
+      expect(wrapper.exists()).toBeTruthy();
+   })
+
   it("Can Create a Post if no inputs are activated", () => {
     const currentPersona = "Zac";
     const newMockPost = jest.fn();
@@ -40,17 +68,5 @@ describe("<CreateNewPost", () => {
     expect(wrapper.exists()).toBeTruthy();
   })
 
-  it('Can Create a Post with just a title', () => {
-        const currentPersona = "Zac";
-        const newMockPost = jest.fn();
-        const wrapper = mount(<Posts CreateNewPost={newMockPost} currentPersona={currentPersona} />);
-        const titleEvent = { target: { name: "title", value: "My Awesome Post" } };
-        const contentEvent = { target: { name: "content", value: null } };
-        wrapper.find('input[name="title"]').simulate("change", titleEvent);
-       // wrapper.find('textarea[name="content"]').simulate('change', contentEvent);
-        wrapper.find("form").simulate("submit");
-        expect(titleEvent.target.value).toBeDefined();
-        expect(contentEvent.target.value).toBe(null);
-        expect(wrapper.exists()).toBeTruthy();
-  })
+ 
 });
