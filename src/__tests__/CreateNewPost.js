@@ -10,7 +10,7 @@ describe("<CreateNewPost", () => {
     expect(wrapper.exists()).toBeTruthy();
   });
 
-  it("Post Created", () => {
+  it("Create a Post", () => {
     const currentPersona = "Morgana";
     const newMockPost = jest.fn();
     const wrapper = mount(<Posts CreateNowPost={newMockPost} currentPersona={currentPersona} />);
@@ -30,4 +30,8 @@ describe("<CreateNewPost", () => {
     expect(titleEvent.target.value).toBeDefined();
     expect(contentEvent.target.value).toBeDefined();
   });
+
+  it("Not Create a Post if no inputs are activated", () => {
+    
+  })
 });
