@@ -6,14 +6,18 @@ import Posts from "../components/Posts";
 describe("<CreateNewPost", () => {
   it("Form was loaded", () => {
     const author = "Morgana";
-    const wrapper = shallow(<CreateNewPost author={author} updatePosts={() => {}} />);
+    const wrapper = shallow(
+      <CreateNewPost author={author} updatePosts={() => {}} />
+    );
     expect(wrapper.exists()).toBeTruthy();
   });
 
-  it("Post Created", () => {
+  it("Create a Post with all input fields activated", () => {
     const currentPersona = "Morgana";
     const newMockPost = jest.fn();
-    const wrapper = mount(<Posts CreateNowPost={newMockPost} currentPersona={currentPersona} />);
+    const wrapper = mount(
+      <Posts CreateNowPost={newMockPost} currentPersona={currentPersona} />
+    );
     const titleEvent = { target: { name: "title", value: "My Awesome Post" } };
     const contentEvent = {
       target: {
@@ -26,8 +30,57 @@ describe("<CreateNewPost", () => {
     wrapper.find("form").simulate("submit");
     /* console.log(titleEvent.target.value);
     console.log(contentEvent.target.value); */
-   // console.log(wrapper.props());
+    // console.log(wrapper.props());
     expect(titleEvent.target.value).toBeDefined();
     expect(contentEvent.target.value).toBeDefined();
+    expect(currentPersona).toBe("Morgana");
+    expect(wrapper.exists()).toBe(true);
+  });
+
+  it("Can Create a Post with only a title", () => {
+    const currentPersona = "Zac";
+    const newMockPost = jest.fn();
+    const wrapper = mount(
+      <Posts CreateNewPost={newMockPost} currentPersona={currentPersona} />
+    );
+    const titleEvent = { target: { name: "title", value: "My Awesome Post" } };
+    const contentEvent = { target: { name: "content", value: null } };
+    wrapper.find('input[name="title"]').simulate("change", titleEvent);
+    wrapper.find("form").simulate("submit");
+    expect(titleEvent.target.value).toBeDefined();
+    expect(contentEvent.target.value).toBe(null);
+    expect(currentPersona).toBe("Zac");
+    expect(wrapper.exists()).toBeTruthy();
+  });
+
+  it("Can Create a Post with only content", () => {
+    const currentPersona = "Zac";
+    const newMockPost = jest.fn();
+    const wrapper = mount(
+      <Posts CreateNewPost={newMockPost} currentPersona={currentPersona} />
+    );
+    const titleEvent = { target: { name: "title", value: null } };
+    const contentEvent = {
+      target: {
+        name: "content",
+        value: "OMG!!, So like I met this guy like and he was really cute like."
+      }
+    };
+    // wrapper.find('input[name="title"]').simulate("change", titleEvent);
+    wrapper.find('textarea[name="content"]').simulate('change', contentEvent);
+    wrapper.find("form").simulate("submit");
+    expect(titleEvent.target.value).toBe(null);
+    expect(contentEvent.target.value).toBeDefined();;
+    expect(wrapper.exists()).toBeTruthy();
+  });
+
+  it("Can Create a Post if no inputs are activated", () => {
+    const currentPersona = "Zac";
+    const newMockPost = jest.fn();
+    const wrapper = mount(
+      <Posts CreateNewPost={newMockPost} currentPersona={currentPersona} />
+    );
+    wrapper.find("form").simulate("submit");
+    expect(wrapper.exists()).toBeTruthy();
   });
 });

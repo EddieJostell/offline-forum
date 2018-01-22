@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Button from './Button';
 
 const SingleComment = ({ id, author, onClick, currentPersona, comment, date }) => (
-  <div key={id} className="py-2 border-b relative">
+  <div key={id} data-type="comment" className="py-2 border-b relative">
     {currentPersona === author && (
       <Button
         danger
