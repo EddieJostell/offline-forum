@@ -20,3 +20,13 @@ describe("<PersonaSwitcher />", () => {
     expect(wrapperPersona.find('select [selected]').val()).toEqual('Morgana');
   }); 
 });
+
+describe("<PersonaSwitcher />", () => {
+  it.skip("Switching persona 2", () => {
+    const wrapper = mount(<App />);
+    let personaState = wrapper.state().currentPersona;
+    expect(wrapper.find('select').val()).toEqual('Zac');
+    wrapper.find('select').simulate('change', {target : { value : "Esmeralda" }});
+    expect(personaState).toEqual('Esmeralda');
+  }); 
+});
