@@ -11,7 +11,7 @@ const SinglePost = ({ title, content, author, id, date, currentPersona, onClick 
         <Button 
           danger
           onClick={() => onClick(id)} 
-          className='absolute pin-t pin-r mx-4 my-6'
+          className={`${author} absolute pin-t pin-r mx-4 my-6`}
         >
           x
         </Button>
@@ -26,13 +26,13 @@ const SinglePost = ({ title, content, author, id, date, currentPersona, onClick 
 );
 
 SinglePost.propTypes = {
-  title: PropTypes.string.isRequired,
+/*   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   currentPersona: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired */
 }
 
 export default SinglePost;
