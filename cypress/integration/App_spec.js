@@ -1,9 +1,7 @@
-
-
 describe('Making a post', () => {
-    beforeEach(() => {
-      cy.visit('http://localhost:3000');
-    });
+  beforeEach(() => {
+    cy.visit('http://localhost:3000');
+  });
   it('should count posts', () => {
     cy.get('[data-type="post"]').should('have.length', 3);
   })
