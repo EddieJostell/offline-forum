@@ -43,7 +43,7 @@ describe("<CreateNewPost", () => {
     expect(wrapper.find(Posts)).toHaveLength(1);
   });
 
-  it("Can Create a Post with only a title", () => {
+  it.skip("Can Create a Post with only a title", () => {
     const currentPersona = "Zac";
     const newMockPost = jest.fn();
     const wrapper = mount(
@@ -64,7 +64,7 @@ describe("<CreateNewPost", () => {
     expect(wrapper.find(Posts)).toHaveLength(1);
   });
 
-  it("Can Create a Post with only content", () => {
+  it.skip("Can Create a Post with only content", () => {
     const currentPersona = "Zac";
     const newMockPost = jest.fn();
     const wrapper = mount(
@@ -85,7 +85,7 @@ describe("<CreateNewPost", () => {
     expect(wrapper.find(Posts)).toHaveLength(1);
   });
 
-  it("Can Create a Post if no inputs are activated", () => {
+  it.skip("Can Create a Post if no inputs are activated", () => {
     const currentPersona = "Zac";
     const newMockPost = jest.fn();
     const wrapper = mount(
