@@ -4,7 +4,7 @@ import Posts from '../components/Posts';
 import fakePosts from '../fakePosts';
 
 describe('', () => {
-  it('', () => {
+  it.skip('', () => {
 
     
 
@@ -12,7 +12,7 @@ describe('', () => {
     const wrapper = mount(<Posts currentPersona="Zac" />);
     const obj = fakePosts.data;
     wrapper.setState({ posts : obj });
-    wrapper.instance().setPostFromLocalStorage();
+   
     wrapper.instance().renderPostList(wrapper.state().posts);
     console.log(wrapper.state().posts);
     expect(wrapper.find('[data-type="post"]')).toHaveLength(3);
@@ -21,3 +21,16 @@ describe('', () => {
     
   })
 })
+
+describe("Posts", () => {
+  it("Fetch a post", () => {
+    const postWrapper = mount(
+      <Posts postId="565ddy34" currentPersona="Esmeralda" />
+    );
+    const mockItem = fakePosts.data
+    const mockery = JSON.stringify(mockItem);
+    localStorage.setItem("posts", mockery);
+    postWrapper.instance().setPostFromLocalStorage("565ddy34");
+    expect(postWrapper.state().posts[0].id).toEqual("565ddy34");
+  });
+});
