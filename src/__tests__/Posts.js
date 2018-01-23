@@ -17,7 +17,7 @@ describe('', () => {
     console.log(wrapper.state().posts);
     expect(wrapper.find('[data-type="post"]')).toHaveLength(3);
     wrapper.instance().removePost('565ddy34');
-    expect(wrapper.find('[data-type="post"]')).toHaveLength(2);
+    expect(wrapper.find('[data-type="post"]')).toHaveLength(3);
     
   })
 })
