@@ -43,7 +43,7 @@ describe("<CreateNewPost", () => {
     expect(wrapper.find(Posts)).toHaveLength(1);
   });
 
-  it.skip("Can Create a Post with only a title", () => {
+  it("Can Create a Post with only a title", () => {
     const currentPersona = "Zac";
     const newMockPost = jest.fn();
     const wrapper = mount(
@@ -61,10 +61,10 @@ describe("<CreateNewPost", () => {
     expect(wrapper.state()).toBeDefined();
     expect(wrapper.state().content).toBe(null);
     expect(currentPersona).toBe("Zac");
-    expect(wrapper.find(Posts)).toHaveLength(1);
+    expect(wrapper.find(Posts)).toHaveLength(2);
   });
 
-  it.skip("Can Create a Post with only content", () => {
+  it("Can Create a Post with only content", () => {
     const currentPersona = "Zac";
     const newMockPost = jest.fn();
     const wrapper = mount(
@@ -82,16 +82,17 @@ describe("<CreateNewPost", () => {
     wrapper.find("form").simulate("submit");
     expect(titleEvent.target.value).toBe(null);
     expect(contentEvent.target.value).toBeDefined();
-    expect(wrapper.find(Posts)).toHaveLength(1);
+    expect(wrapper.find(Posts)).toHaveLength(2);
   });
 
-  it.skip("Can Create a Post if no inputs are activated", () => {
+  it("Can Create a Post if no inputs are activated", () => {
     const currentPersona = "Zac";
     const newMockPost = jest.fn();
     const wrapper = mount(
       <Posts CreateNewPost={newMockPost} currentPersona={currentPersona} />
     );
     wrapper.find("form").simulate("submit");
-    expect(wrapper.find(Posts)).toHaveLength(1);
+    expect(wrapper.find(Posts)).toHaveLength(2);
+    console.log(CreateNewPost.debug())
   });
 });
