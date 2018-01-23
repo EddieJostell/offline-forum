@@ -25,9 +25,8 @@ describe("Comments", () => {
 
   it("Render list of comments", () => {
     const commentWrapper = mount(
-      <Comments postId="117as" currentPersona="Esmeralda" />
+      <Comments postId="qwe098" currentPersona="Esmeralda" />
     );
-
     const mockItem = [
       {
         comment: "Esmeralda of the streets of Paris",
@@ -39,11 +38,14 @@ describe("Comments", () => {
     ];
     const mockery = JSON.stringify(mockItem);
     localStorage.setItem("comments", mockery);
-
-    commentWrapper
+     commentWrapper.instance().setCommentsFromLocalStorage("qwe098");
+    const commentRenderList = commentWrapper
       .instance()
       .renderCommentList(commentWrapper.state().comments);
-    console.log(commentWrapper.state().comments);
+   /*  console.log(commentWrapper
+      .instance()
+      .renderCommentList(commentWrapper.state().comments)); */
+    expect(commentRenderList).toHaveLength(1);
   });
 
   it("Remove a comment", () => {

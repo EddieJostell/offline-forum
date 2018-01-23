@@ -19,7 +19,6 @@ describe("<CreateNewPost", () => {
       <Posts
         CreateNowPost={newMockPost}
         currentPersona={currentPersona}
-        onSubmit={newMockPost}
       />
     );
     const titleEvent = { target: { name: "title", value: "My Awesome Post" } };
@@ -43,7 +42,7 @@ describe("<CreateNewPost", () => {
     expect(wrapper.find(Posts)).toHaveLength(1);
   });
 
-/*   it.skip("Can Create a Post with only a title", () => {
+  it.skip("Can Create a Post with only a title", () => {
     const currentPersona = "Zac";
     const newMockPost = jest.fn();
     const wrapper = mount(
@@ -93,5 +92,5 @@ describe("<CreateNewPost", () => {
     );
     wrapper.find("form").simulate("submit");
     expect(wrapper.find(Posts)).toHaveLength(1);
-  }); */
+  });
 });
