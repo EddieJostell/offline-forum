@@ -42,10 +42,7 @@ describe("Comments", () => {
     const commentRenderList = commentWrapper
       .instance()
       .renderCommentList(commentWrapper.state().comments);
-   /*  console.log(commentWrapper
-      .instance()
-      .renderCommentList(commentWrapper.state().comments)); */
-    expect(commentRenderList).toHaveLength(1);
+    expect(commentRenderList).not.toHaveLength(0);
   });
 
   it("Remove a comment", () => {
