@@ -35,7 +35,7 @@ class Posts extends Component {
 
   render() {
     return (
-      <div className="flex flex-wrap mx-auto pt-8">
+      <div data-type="allaPosts" className="flex flex-wrap mx-auto pt-8">
         <CreateNewPost
           updatePosts={this.setPostFromLocalStorage}
           author={this.props.currentPersona}
