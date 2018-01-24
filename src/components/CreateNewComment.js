@@ -25,6 +25,7 @@ class CreateNewComment extends Component {
   render() {
     return (
       <form
+        data-type="comment"
         onSubmit={this.onSubmit}
         className='container mx-auto flex flex-col p-6'
       >
