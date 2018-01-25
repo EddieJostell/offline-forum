@@ -1,8 +1,7 @@
 import React from 'react';
-import { mount, render, shallow } from "enzyme";
-import MessageForm from '../components/Bot/MessageForm';
-import Bot from '../components/Bot/Bot';
-import * as api from '../api/index';
+import { mount } from "enzyme";
+import MessageForm from '../../components/Bot/MessageForm';
+import Bot from '../../components/Bot/Bot';
 
 describe('<MessageForm />', () => {
 
@@ -13,25 +12,31 @@ describe('<MessageForm />', () => {
     })
 
     jest.useFakeTimers();
-    jest.runAllTimers();
     
+    function flushPromises() {
+        return new Promise(resolve => setImmediate(resolve))
+    }
+
     it('should submit a message from user', () => {
         const msg = {target: { name: "userMessage", value: "Hey whats up hello!"} };
-        const msgFormWrapper = mount(<MessageForm onSubmit="" />)
+        // const msgFormWrapper = mount(<MessageForm onSubmit="" />)
         wrapper.find(MessageForm).find('[type="text"]').simulate("change", msg);
         wrapper.find(MessageForm).find('form').simulate('submit');
         console.log(wrapper.state().messages);
-        wrapper.instance().onSubmit(msgFormWrapper.props().onSubmit)
-        expect(wrapper.instance().sendReply()).toHaveBeenCalled();
-        console.log(wrapper.state().messages)
-
+        jest.runAllTimers();
+        // wrapper.instance().onSubmit(msgFormWrapper.props().onSubmit)
+        wrapper.instance().sendReply();
+        console.log(wrapper.state())
+        return flushPromises().then(()=> {
+            expect(true);
+            console.log(wrapper.state());
+        })
     })
 
-        it('should submit a message from bot', () => {
+    it('should submit a message from bot', () => {
         const msg = {target: { name: "userMessage", value: "Hey whats up hello!"} };
         wrapper.find(MessageForm).find('[type="text"]').simulate("change", msg);
         wrapper.find(MessageForm).find('form').simulate('submit');
-       // console.log(wrapper.state().messages);
-
+        // console.log(wrapper.state().messages);
     })
 })
