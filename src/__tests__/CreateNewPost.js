@@ -1,7 +1,6 @@
 import React from "react";
 import { shallow, mount, render } from "enzyme";
 import CreateNewPost from "../components/CreateNewPost";
-import Posts from "../components/Posts";
 
 describe("<CreateNewPost", () => {
   it("Form was loaded", () => {
