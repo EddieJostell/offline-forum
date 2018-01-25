@@ -1,34 +1,34 @@
 import React from 'react';
 import { shallow, mount, render } from 'enzyme';
 import TypingIndicator from '../../components/Bot/TypingIndicator';
-import Bot from '../../components/Bot/Bot';
-import MessageForm from '../../components/Bot/MessageForm';
+
+
 
 
 describe('<TypingIndicator', () => {
 
-  let wrapper = mount(<Bot />);
+  let wrapper = mount(<TypingIndicator />);
 
   beforeEach(() => {
-    wrapper = mount(<Bot />);
+     wrapper = mount(<TypingIndicator />);
   });
 
 
-    it('should on state typing true render Indicator', () => {
-        const msg = {target: {name: "userMessage", value: "YOLO!"} };
-       wrapper.find(MessageForm).find('[type="text"]').simulate('change', msg);
-       wrapper
-         .find(MessageForm)
-         .find("form")
-         .simulate("submit");
-       console.log(wrapper.state())
-       expect(wrapper.find(TypingIndicator).exists()).toEqual(true);
+    it('should not be visible on mount', () => {
+      expect(wrapper.html()).toEqual(null);
         
     })
 
-    it.skip('should set css on state typing true', () => {
-        wrapper.setState({ typing : true});
-        console.log(wrapper.state());
-        expect(wrapper.find(TypingIndicator).hasClass("TypingIndicator")).toBe(true);
+    it('should be visible if state "typing" equal true', () => {
+      expect(wrapper.html()).toEqual(null);
+      wrapper.setProps({ typing : true});
+    expect(wrapper
+        .find('div')
+        .hasClass("bg-indigo-dark")).toBe(true);
+         
     })
+    it('should contain three <span /> tags', () => {
+      wrapper.setProps({ typing: true });
+      expect(wrapper.find("div").children()).toHaveLength(3);
+    });
 })
