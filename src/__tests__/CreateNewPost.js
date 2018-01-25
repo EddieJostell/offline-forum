@@ -12,15 +12,15 @@ describe("<CreateNewPost", () => {
     expect(wrapper.exists()).toBeTruthy();
   });
 
-  it("Create a Post with all input fields activated", () => {
-    const currentPersona = "Morgana";
-    const newMockPost = jest.fn();
+  it("Create a Post and change state onchange title & content", () => {
+    // const newMockUpdate = jest.fn();
     const wrapper = mount(
-      <Posts
-        CreateNowPost={newMockPost}
-        currentPersona={currentPersona}
+      <CreateNewPost
+        author="Morgana"
+        updatePosts=""
       />
     );
+
     const titleEvent = { target: { name: "title", value: "My Awesome Post" } };
     const contentEvent = {
       target: {
@@ -30,19 +30,14 @@ describe("<CreateNewPost", () => {
     };
     wrapper.find('input[name="title"]').simulate("change", titleEvent);
     wrapper.find('textarea[name="content"]').simulate("change", contentEvent);
-    wrapper.find('[data-type="form"]').simulate("submit");
-    wrapper.setState({
-      title: titleEvent.target.value,
-      content: contentEvent.target.value
-    });
-   // console.log(wrapper.state());
+   // wrapper.find('[data-type="form"]').simulate("submit");
+    
     expect(wrapper.state().title).toEqual("My Awesome Post");
     expect(wrapper.state().content).toEqual("Awesome Content Right here! You Definetly need to read this!");
-    expect(currentPersona).toBe("Morgana");
-    expect(wrapper.find(Posts)).toHaveLength(1);
+  
   });
 
-/*   it("Can Create a Post with only a title", () => {
+  /* it("Can Create a Post with only a title", () => {
     const currentPersona = "Zac";
     const newMockPost = jest.fn();
     const wrapper = mount(

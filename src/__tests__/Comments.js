@@ -1,7 +1,6 @@
 import React from "react";
 import { mount, render, shallow } from "enzyme";
 import Comments from "../components/Comments";
-import SingleComment from "../components/SingleComment";
 
 describe("Comments", () => {
   it("Fetch a comment", () => {
@@ -75,11 +74,9 @@ describe("Comments", () => {
     // console.log(mockery);
     localStorage.setItem("comments", mockery);
     commentWrapper.instance().setCommentsFromLocalStorage();
-    console.log(localStorage.getItem);
-    commentWrapper.instance().renderCommentList(commentWrapper.state().comments);
     console.log(commentWrapper.state().comments);
     commentWrapper.instance().removeComment("117as");
     console.log(commentWrapper.state().comments);
-    expect(commentWrapper.state().comments).toHaveLength(0);
+    expect(commentWrapper.state().comments).not.toHaveLength(1);
   });
 });
