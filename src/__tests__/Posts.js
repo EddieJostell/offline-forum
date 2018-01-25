@@ -22,6 +22,7 @@ describe("Posts", () => {
     postWrapper.instance().setPostFromLocalStorage("565ddy34");
     postWrapper.instance().removePost("565ddy34");
     expect(postWrapper.state().posts[0].id).not.toContain("565ddy34");
+    // console.log(postWrapper.state().posts)
   });
 });
 
@@ -29,9 +30,14 @@ describe("Posts", () => {
   it("render posts", () => {
     postWrapper.instance().setPostFromLocalStorage();
     postWrapper.instance().renderPostList(postWrapper.state().posts);
-    expect(postWrapper.find(SinglePost).find('[author="Zac"]')).toBeTruthy();
+    const singlepost = render(<SinglePost />)
+    // console.log(postWrapper.state().posts)
+    expect(singlepost.find('[data-type="post"]').html()).toHaveLength(0);
     expect(postWrapper.find(SinglePost).find('[author="Esmeralda"]')).toBeTruthy();
     expect(postWrapper.find(SinglePost).find('[author="Morgana"]')).toBeTruthy();
+    console.log(postWrapper.find(SinglePost))
+    // expect(postWrapper.state().posts).toMatchObject([{ author: 'Esmeralda' }])
+    // expect(postWrapper.state().posts).toContain([expect.objectContaining({ author: 'Morgana' })])
   });
 });
 
