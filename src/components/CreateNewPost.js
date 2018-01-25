@@ -23,6 +23,7 @@ class CreateNewPost extends Component {
     const { title, content } = this.state;
     return (
       <form
+        data-type="form"
         onSubmit={this.onSubmit}
         className="container mx-auto flex flex-col p-6"
       >
