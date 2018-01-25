@@ -69,13 +69,6 @@ describe("Comments", () => {
         postId: "lks334",
         author: "Esmeralda",
         date: "1/23/2018, 12:30:54 PM"
-      },
-      {
-        comment: "Morgana of Castle Camelot",
-        id: "2287qw",
-        postId: "lks334",
-        author: "Morgana",
-        date: "1/23/2018, 03:10:32 AM"
       }
     ];
     const mockery = JSON.stringify(mockItem);
