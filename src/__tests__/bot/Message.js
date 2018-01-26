@@ -16,4 +16,4 @@ describe('<Message CSS />', () => {
     expect(wrapper.props().bot).toBeFalsy()
     expect(wrapper.find('p').hasClass('bg-white')).toBeTruthy()
   });
-});`´
+});

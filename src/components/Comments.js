@@ -27,6 +27,7 @@ class Comments extends Component {
   renderCommentList = comments =>
     comments.map(comment => (
       <SingleComment
+        currentPersona=""
         {...comment}
         key={comment.id}
         onClick={this.removeComment}

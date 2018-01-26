@@ -1,6 +1,7 @@
 describe("App.js", () => {
   context("Creating Post(s)", () => {
     beforeEach(() => {
+      localStorage.clear();
       cy.visit("http://localhost:3000");
     });
     it("should count posts", () => {
@@ -17,15 +18,16 @@ describe("App.js", () => {
 
   context("Creating Comments on Post(s)", () => {
     beforeEach(() => {
+      localStorage.clear();
       cy.visit("http://localhost:3000");
     });
    
     it("should count comments", () => {
-      cy.get('[data-test="comment"]').should("have.length", 0);
+      cy.get('[data-type="comment"]').should("have.length", 3);
     });
 
     it("should make a comment", () => {
-      cy.get('[data-type="comment"]').should("have.length", 0);
+      cy.get('[data-type="comment"]').should("have.length", 3);
       cy.get(".block").select("Zac");
       cy
         .get(":nth-child(2) > div.py-2 > .container > #comment")
@@ -34,7 +36,7 @@ describe("App.js", () => {
       cy
         .get(":nth-child(2) > :nth-child(2) > .container > .bg-indigo-dark")
         .click();
-      cy.get('[data-type="comment"]').should("have.length", 1);
+      cy.get('[data-type="comment"]').should("have.length", 4);
     });
 
     context(
@@ -45,7 +47,7 @@ describe("App.js", () => {
         });
 
         it("should do as said in the context ", () => {
-          cy.get('[data-type="comment"]').should("have.length", 0);
+          cy.get('[data-type="comment"]').should("have.length", 3);
           cy.get(".block").select("Zac");
           cy
             .get(":nth-child(2) > div.py-2 > .container > #comment")

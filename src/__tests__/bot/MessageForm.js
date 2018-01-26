@@ -26,7 +26,7 @@ describe('<MessageForm />', () => {
         jest.runAllTimers();
         // wrapper.instance().onSubmit(msgFormWrapper.props().onSubmit)
         wrapper.instance().sendReply();
-        console.log(wrapper.state())
+        // console.log(wrapper.state())
         return flushPromises().then(()=> {
             expect(true);
             console.log(wrapper.state());
