@@ -22,7 +22,7 @@ describe('<Comments />', () => {
     const mockery = JSON.stringify(mockItem);
     localStorage.setItem("comments", mockery);
     const wrapper = mount(<Comments currentPersona='Zac' postId="_ilfas!" />);
-    const Singlewrapper = mount(<SingleComment currentPersona={wrapper.props().currentPersona} author="Zac" id="213829081" date="2018-01-23 10:58:36" comment="Contenty" onClick={jest.fn()} />);
+    const Singlewrapper = mount(<SingleComment currentPersona='Zac' author="Zac" id="213829081" date="2018-01-23 10:58:36" comment="Contenty" onClick={jest.fn()} />);
     wrapper.instance().setCommentsFromLocalStorage()
     console.log(wrapper.state().comments)
     wrapper.instance().renderCommentList(wrapper.state().comments)

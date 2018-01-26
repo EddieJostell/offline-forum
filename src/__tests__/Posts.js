@@ -31,11 +31,10 @@ describe("Posts", () => {
     postWrapper.instance().setPostFromLocalStorage();
     // console.log(postWrapper.state().posts)
     postWrapper.instance().renderPostList(postWrapper.state().posts);
-    const singlepost = render(<SinglePost />)
-    console.log(singlepost.find('[data-type="post"]').html())
-    expect(postWrapper.find(singlepost).find('[author="Zac"]')).toBeTruthy();
-    expect(postWrapper.find(singlepost).find('[author="Esmeralda"]')).toBeTruthy();
-    expect(postWrapper.find(singlepost).find('[author="Morgana"]')).toBeTruthy();
+    // console.log(postWrapper.render().find('[data-type="post"]').html())
+    expect(postWrapper.render().find('[author="Zac"]'))
+    expect(postWrapper.render().find('[author="Esmeralda"]'))
+    expect(postWrapper.render().find('[author="Morgana"]'))
     // expect(postWrapper.state().posts).toMatchObject([{ author: 'Esmeralda' }])
     // expect(postWrapper.state().posts).toContain([expect.objectContaining({ author: 'Morgana' })])
   });

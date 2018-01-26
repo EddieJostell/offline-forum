@@ -19,24 +19,18 @@ describe('<MessageForm />', () => {
 
     it('should submit a message from user', () => {
         const msg = {target: { name: "userMessage", value: "Hey whats up hello!"} };
-        // const msgFormWrapper = mount(<MessageForm onSubmit="" />)
+        const msgFormWrapper = mount(<MessageForm onSubmit="Hello" />)
         wrapper.find(MessageForm).find('[type="text"]').simulate("change", msg);
         wrapper.find(MessageForm).find('form').simulate('submit');
         console.log(wrapper.state().messages);
         jest.runAllTimers();
-        // wrapper.instance().onSubmit(msgFormWrapper.props().onSubmit)
-        wrapper.instance().sendReply();
-        console.log(wrapper.state())
+        wrapper.instance().onSubmit(msgFormWrapper.props().onSubmit)
+        // wrapper.instance().sendReply();
+        // console.log(wrapper.state())
         return flushPromises().then(()=> {
             expect(true);
+            expect(wrapper.state().messages[1].message).toEqual("Hello");
             console.log(wrapper.state());
         })
-    })
-
-    it('should submit a message from bot', () => {
-        const msg = {target: { name: "userMessage", value: "Hey whats up hello!"} };
-        wrapper.find(MessageForm).find('[type="text"]').simulate("change", msg);
-        wrapper.find(MessageForm).find('form').simulate('submit');
-        // console.log(wrapper.state().messages);
     })
 })
