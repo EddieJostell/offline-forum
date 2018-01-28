@@ -6,10 +6,10 @@ describe("App.js", () => {
       localStorage.clear();
       cy.visit("http://localhost:3000");
     });
-    it("should count posts", () => {
+    it.skip("should count posts", () => {
       cy.get('[data-type="post"]').should("have.length", 3);
     });
-    it("should make a post", () => {
+    it.skip("should make a post", () => {
       cy.get('[data-type="post"]').should("have.length", 3);
       cy.get('[name="title"]').type("Hello World", { delay: 200 });
       cy.get('[name="content"]').type("Funka plx", { delay: 200 });
@@ -24,11 +24,11 @@ describe("App.js", () => {
       cy.visit("http://localhost:3000");
     });
    
-    it("should count comments", () => {
+    it.skip("should count comments", () => {
       cy.get('[data-type="comment"]').should("have.length", 3);
     });
 
-    it("should make a comment", () => {
+    it.skip("should make a comment", () => {
       cy.get('[data-type="comment"]').should("have.length", 3);
       cy.get(".block").select("Zac");
       cy
@@ -48,7 +48,7 @@ describe("App.js", () => {
           cy.visit("http://localhost:3000");
         });
 
-        it("should do as said in the context ", () => {
+        it.skip("should do as said in the context ", () => {
           cy.get('[data-type="comment"]').should("have.length", 3);
           cy.get(".block").select("Zac", { delay: 200 });
           cy
@@ -75,7 +75,7 @@ describe("App.js", () => {
         });
 
          
-                it("should make avatars remove their posts", () => {
+                it.skip("should make avatars remove their posts", () => {
                    cy
                      .get(".block")
                      .select("Esmeralda", { delay: 200 });
@@ -92,5 +92,19 @@ describe("App.js", () => {
 
       }
     );
+    context('Talking to real human?', () => {
+      beforeEach(() => {
+        cy.visit("http://localhost:3000");
+      });
+      it('should send message to human bot :^)', () => {
+        cy.wait(200);
+        cy.get('.pin-l').click();
+        cy.get('form.mx-auto > .shadow').type("Are you real?", { delay : 50 });
+        cy.get('form.mx-auto > .bg-indigo-dark').click();
+        cy.contains('Are you real?');
+        cy.get('.h-64 > .bg-white', {timeout: 15000});
+        cy.get('.h-64').children().should('have.length', 2);
+      });
+    });
   });
 });
