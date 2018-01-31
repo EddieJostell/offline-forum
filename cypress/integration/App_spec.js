@@ -6,10 +6,10 @@ describe("App.js", () => {
       localStorage.clear();
       cy.visit("http://localhost:3000");
     });
-    it.skip("should count posts", () => {
+    it("should count posts", () => {
       cy.get('[data-type="post"]').should("have.length", 3);
     });
-    it.skip("should make a post", () => {
+    it("should make a post", () => {
       cy.get('[data-type="post"]').should("have.length", 3);
       cy.get('[name="title"]').type("Hello World", { delay: 200 });
       cy.get('[name="content"]').type("Funka plx", { delay: 200 });
@@ -24,11 +24,11 @@ describe("App.js", () => {
       cy.visit("http://localhost:3000");
     });
    
-    it.skip("should count comments", () => {
+    it("should count comments", () => {
       cy.get('[data-type="comment"]').should("have.length", 3);
     });
 
-    it.skip("should make a comment", () => {
+    it("should make a comment", () => {
       cy.get('[data-type="comment"]').should("have.length", 3);
       cy.get(".block").select("Zac");
       cy
@@ -48,7 +48,7 @@ describe("App.js", () => {
           cy.visit("http://localhost:3000");
         });
 
-        it.skip("should do as said in the context ", () => {
+        it("should do as said in the context ", () => {
           cy.get('[data-type="comment"]').should("have.length", 3);
           cy.get(".block").select("Zac", { delay: 200 });
           cy
@@ -75,7 +75,7 @@ describe("App.js", () => {
         });
 
          
-                it.skip("should make avatars remove their posts", () => {
+                it("should make avatars remove their posts", () => {
                    cy
                      .get(".block")
                      .select("Esmeralda", { delay: 200 });

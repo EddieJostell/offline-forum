@@ -25,7 +25,7 @@ describe("What page am I on?", () => {
 
 describe("<PersonaSwitcher />", () => {
   it('Switching persona', () => {
-    const wrapper = mount(<App/>);
+    const wrapper = mount(<App />);
     expect(wrapper.find(PersonaSwitcher).render().find('select').val()).toEqual('Zac');
     let selectWrapper = wrapper.find('select');
     selectWrapper.simulate('change', {target : { value : "Esmeralda" }});

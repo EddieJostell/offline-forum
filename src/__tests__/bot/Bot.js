@@ -25,24 +25,24 @@ describe("<Bot />", () => {
     expect(wrapper.html()).toContain("div");
   });
 
-  it("should send a message from human and  get a reply from bot", () => {
-    wrapper
-      .find(MessageForm)
-      .find('[type="text"]')
-      .simulate("change", mockItem);
-    wrapper
-      .find(MessageForm)
-      .find("form")
-      .simulate("submit");
-    console.log(wrapper.state().typing);
-    expect(wrapper.state().typing).toBe(true);
-    jest.runAllTimers();
-    wrapper.instance().sendReply();
-    return flushPromises().then(() => {
-        expect(true);
-         expect(wrapper.state().messages[1].bot).toBe(true);
-        console.log(wrapper.state().messages);
-    });
-    
+it("should send a message from human and  get a reply from bot", () => {
+  wrapper
+    .find(MessageForm)
+    .find('[type="text"]')
+    .simulate("change", mockItem);
+  wrapper
+    .find(MessageForm)
+    .find("form")
+    .simulate("submit");
+  console.log(wrapper.state().typing);
+  expect(wrapper.state().typing).toBe(true);
+  jest.runAllTimers();
+  wrapper.instance().sendReply();
+  return flushPromises().then(() => {
+    expect(true);
+    expect(wrapper.state().messages[1].bot).toBe(true);
+    console.log(wrapper.state().messages);
   });
+  
+});
 });

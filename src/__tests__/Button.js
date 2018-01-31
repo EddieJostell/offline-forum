@@ -31,9 +31,9 @@ it("Button has CSS", () => {
   expect(btn.find('[data-test="button"]').hasClass("bg-red-dark")).toBe(true);
   });
 
-  it('Button can be clicked', () => {
-     const mockCallBack = jest.fn();
-     const btn = shallow(<Button onClick={mockCallBack} />);
-     btn.find('[data-test="button"]').simulate("click");
-     expect(mockCallBack.mock.calls.length).toEqual(1);
-  });
+it('Button can be clicked', () => {
+  const mockCallBack = jest.fn();
+  const btn = shallow(<Button onClick={mockCallBack} />);
+  btn.find('[data-test="button"]').simulate("click");
+  expect(mockCallBack.mock.calls.length).toEqual(1);
+});
