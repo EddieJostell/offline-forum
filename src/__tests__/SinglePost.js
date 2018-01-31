@@ -13,8 +13,6 @@ describe('<SinglePost />', () => {
     const wrapper = mount(<SinglePost author="Zac" currentPersona="Zac" onClick={mock} />);
     const button = wrapper.find(Button);
     expect(PostWrapper.find('[data-type="allaPosts"]')).toHaveLength(1);
-    console.log(PostWrapper.find('[data-type="allaPosts"]').html())
-    console.log(button.html())
     expect(wrapper.props().author && wrapper.props().currentPersona).toEqual("Zac");
     button.find('button').simulate('click');
     expect(wrapper.find('[data-type="post"]')).toHaveLength(1);        

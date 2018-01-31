@@ -24,10 +24,8 @@ describe('<Comments />', () => {
     const wrapper = mount(<Comments currentPersona='Zac' postId="_ilfas!" />);
     const Singlewrapper = mount(<SingleComment currentPersona='Zac' author="Zac" id="213829081" date="2018-01-23 10:58:36" comment="Contenty" onClick={jest.fn()} />);
     wrapper.instance().setCommentsFromLocalStorage()
-    console.log(wrapper.state().comments)
     wrapper.instance().renderCommentList(wrapper.state().comments)
     const button = Singlewrapper.find('button').find('.bg-red-dark');
-    console.log(Singlewrapper.html());
     button.simulate('click'); 
     expect(wrapper.render().find('.bg-red-dark').html()).toBeNull();
   })
