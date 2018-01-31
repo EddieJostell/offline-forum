@@ -25,10 +25,10 @@ it.skip("Button has props", () => {
 });
 
 it("Button has CSS", () => {
-  const btn = shallow(<Button danger={true} onClick={() => {}}  />);
-  expect(btn.find('[data-test="button"]').hasClass("bg-red-dark")).toBe(true);
-  btn.setProps({ danger : false });
+  const btn = shallow(<Button danger={false} onClick={() => {}}  />);
   expect(btn.find('[data-test="button"]').hasClass("bg-red-dark")).toBe(false);
+  btn.setProps({ danger : true });
+  expect(btn.find('[data-test="button"]').hasClass("bg-red-dark")).toBe(true);
   });
 
   it('Button can be clicked', () => {
