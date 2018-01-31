@@ -27,7 +27,6 @@ describe("<PersonaSwitcher />", () => {
   it('Switching persona', () => {
     const wrapper = mount(<App/>);
     expect(wrapper.find(PersonaSwitcher).render().find('select').val()).toEqual('Zac');
-    console.log(wrapper.find(PersonaSwitcher).props())
     let selectWrapper = wrapper.find('select');
     selectWrapper.simulate('change', {target : { value : "Esmeralda" }});
     expect(wrapper.state().currentPersona).toEqual('Esmeralda');
