@@ -5,12 +5,6 @@ import Comments from "../components/Comments";
 
 
 describe('<Comments />', () => {
-  it.skip('Should remove post', () => {
-    const wrapper = render(<SingleComment currentPersona="Zac" onClick={() => {}} />);
-    const post = wrapper.find('[data-type="comment"]');
-    expect(post).toHaveLength(0);
-  });
-
   it('Should remove button on press', () => {
     const mockItem = [{  
       "comment": "Contenty", 

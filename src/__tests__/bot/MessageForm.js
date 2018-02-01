@@ -17,17 +17,12 @@ describe('<MessageForm />', () => {
         return new Promise(resolve => setImmediate(resolve))
     }
 
-    it('should submit a message from user', () => {
+    it('should submit a message from user', async () => {
         const msg = {target: { name: "userMessage", value: "Hey whats up hello!"} };
-        const msgFormWrapper = mount(<MessageForm onSubmit="Hello" />)
         wrapper.find(MessageForm).find('[type="text"]').simulate("change", msg);
         wrapper.find(MessageForm).find('form').simulate('submit');
         jest.runAllTimers();
-        wrapper.instance().onSubmit(msgFormWrapper.props().onSubmit)
-        // wrapper.instance().sendReply();
-        return flushPromises().then(()=> {
-            expect(true);
-            expect(wrapper.state().messages[1].message).toEqual("Hello");
-        })
+        await flushPromises();
+        expect(wrapper.state().messages[0].message).toEqual("Hey whats up hello!");
     })
 })

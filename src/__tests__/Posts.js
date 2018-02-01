@@ -22,7 +22,6 @@ describe("Posts", () => {
     postWrapper.instance().setPostFromLocalStorage("565ddy34");
     postWrapper.instance().removePost("565ddy34");
     expect(postWrapper.state().posts[0].id).not.toContain("565ddy34");
-    // console.log(postWrapper.state().posts)
   });
 });
 
