@@ -13,7 +13,7 @@ describe("<Button />", () => {
   });
 
   it("Snapshot of component", () => {
-    const btn = render(<Button onClick="onClick" />);
+    const btn = render(<Button onClick={() => {}} />);
     expect(btn).toMatchSnapshot();
   });
 
