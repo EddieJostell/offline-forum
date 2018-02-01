@@ -19,7 +19,6 @@ describe("<CreateNewPost", () => {
     });
 
   it("Create a Post and change state onchange title & content", () => {
-    // const newMockUpdate = jest.fn();
     const wrapper = mount(
       <CreateNewPost
         author="Morgana"
@@ -35,10 +34,9 @@ describe("<CreateNewPost", () => {
     };
     wrapper.find('input[name="title"]').simulate("change", title);
     wrapper.find('textarea[name="content"]').simulate("change", content);
-   // wrapper.find('[data-type="form"]').simulate("submit");
     expect(wrapper.state().title).toEqual("My Awesome Post");
     expect(wrapper.state().content).toEqual("Awesome Content Right here! You Definetly need to read this!");
-  
+    wrapper.find('[data-type="form"]').simulate("submit");
   });
 
 

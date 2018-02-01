@@ -2,14 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import AvatarSelector from '../components/AvatarSelector';
 
-/* test('renders the AvatarSelector', () => {
-  const wrapper = shallow(<AvatarSelector currentPersona="Zac" />);
-  const item = wrapper.find('[data-avatarimg="avatarImg"]');
-  item.find()
-  console.log(wrapper.html());
-}); */
-
-
 describe("<AvatarSelector />", () => {
   it("renders an image", () => {
     const logo = shallow(<AvatarSelector currentPersona="Zac" />);

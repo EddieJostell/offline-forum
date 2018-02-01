@@ -10,7 +10,6 @@ describe("<Bot />", () => {
 
   beforeEach(() => {
       wrapper = mount(<Bot />);
-    // mockItem = { message: "YOLO!", bot: false };
     mockItem = { target: { name: "userMessage", value: "YOLO!" } };
   });
 
@@ -21,7 +20,6 @@ describe("<Bot />", () => {
   }
 
   it("should render component", () => {
-    // console.log(wrapper.html());
     expect(wrapper.html()).toContain("div");
   });
 
@@ -34,14 +32,12 @@ it("should send a message from human and  get a reply from bot", () => {
     .find(MessageForm)
     .find("form")
     .simulate("submit");
-  console.log(wrapper.state().typing);
   expect(wrapper.state().typing).toBe(true);
   jest.runAllTimers();
   wrapper.instance().sendReply();
   return flushPromises().then(() => {
     expect(true);
     expect(wrapper.state().messages[1].bot).toBe(true);
-    console.log(wrapper.state().messages);
   });
   
 });

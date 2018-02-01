@@ -9,31 +9,32 @@ describe("<Button />", () => {
   });
 
   it("render the Button", () => {
-   expect(render(<Button onClick={() => {}} />)).toBeTruthy();
-  });
-});
-
-it.skip("Snapshot of component", () => {
-  const btn = render(<Button onClick="onClick" />);
-  expect(btn).toMatchSnapshot();
-});
-
-it.skip("Button has props", () => {
-  const btn = shallow(<Button  onClick={() => {}} />);
-  //  console.log(btn.props());
-  expect(btn.props()).toBeTruthy();
-});
-
-it("Button has CSS", () => {
-  const btn = shallow(<Button danger={false} onClick={() => {}}  />);
-  expect(btn.find('[data-test="button"]').hasClass("bg-red-dark")).toBe(false);
-  btn.setProps({ danger : true });
-  expect(btn.find('[data-test="button"]').hasClass("bg-red-dark")).toBe(true);
+    expect(render(<Button onClick={() => {}} />)).toBeTruthy();
   });
 
-it('Button can be clicked', () => {
-  const mockCallBack = jest.fn();
-  const btn = shallow(<Button onClick={mockCallBack} />);
-  btn.find('[data-test="button"]').simulate("click");
-  expect(mockCallBack.mock.calls.length).toEqual(1);
+  it("Snapshot of component", () => {
+    const btn = render(<Button onClick="onClick" />);
+    expect(btn).toMatchSnapshot();
+  });
+
+  it("Button has props", () => {
+    const btn = shallow(<Button onClick={() => {}} />);
+    expect(btn.props()).toBeTruthy();
+  });
+
+  it("Button has CSS", () => {
+    const btn = shallow(<Button danger={false} onClick={() => {}} />);
+    expect(btn.find('[data-test="button"]').hasClass("bg-red-dark")).toBe(
+      false
+    );
+    btn.setProps({ danger: true });
+    expect(btn.find('[data-test="button"]').hasClass("bg-red-dark")).toBe(true);
+  });
+
+  it("Button can be clicked", () => {
+    const mockCallBack = jest.fn();
+    const btn = shallow(<Button onClick={mockCallBack} />);
+    btn.find('[data-test="button"]').simulate("click");
+    expect(mockCallBack.mock.calls.length).toEqual(1);
+  });
 });
